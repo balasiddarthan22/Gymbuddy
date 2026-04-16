@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GymBuddy</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-icon">GB</div>
+      GymBuddy
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Dark mode</button>
+  </div>
+
+  <div class="container">
+
+    <div class="hero">
+      <h1>Your personal gym guide</h1>
+      <p>Tell us your goal and what you have access to — we'll build a workout plan just for you, with video guides for every exercise.</p>
+    </div>
+
+    <div id="formSection">
+
+      <div class="card">
+        <div class="card-label">Step 1</div>
+        <div class="card-title">What's your main goal?</div>
+        <div class="options-grid">
+          <button class="option-btn" onclick="selectOption('goal', 'Build strength & muscle', this)">Build strength & muscle</button>
+          <button class="option-btn" onclick="selectOption('goal', 'Lose weight & get leaner', this)">Lose weight & get leaner</button>
+          <button class="option-btn" onclick="selectOption('goal', 'Improve fitness & endurance', this)">Improve fitness & endurance</button>
+          <button class="option-btn" onclick="selectOption('goal', 'Tone up & feel confident', this)">Tone up & feel confident</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Step 2</div>
+        <div class="card-title">What equipment do you have? (select all that apply)</div>
+        <div class="equipment-grid">
+          <button class="eq-btn" onclick="toggleEquip('Dumbbells', this)">Dumbbells</button>
+          <button class="eq-btn" onclick="toggleEquip('Barbell', this)">Barbell</button>
+          <button class="eq-btn" onclick="toggleEquip('Cable machine', this)">Cable machine</button>
+          <button class="eq-btn" onclick="toggleEquip('Resistance bands', this)">Resistance bands</button>
+          <button class="eq-btn" onclick="toggleEquip('Pull-up bar', this)">Pull-up bar</button>
+          <button class="eq-btn" onclick="toggleEquip('Leg press', this)">Leg press</button>
+          <button class="eq-btn" onclick="toggleEquip('Bench', this)">Bench</button>
+          <button class="eq-btn" onclick="toggleEquip('Smith machine', this)">Smith machine</button>
+          <button class="eq-btn" onclick="toggleEquip('Bodyweight only', this)">Bodyweight only</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Step 3</div>
+        <div class="card-title">What's your fitness level?</div>
+        <div class="options-grid">
+          <button class="option-btn" onclick="selectOption('level', 'Complete beginner', this)">Complete beginner</button>
+          <button class="option-btn" onclick="selectOption('level', 'Some experience', this)">Some experience</button>
+          <button class="option-btn" onclick="selectOption('level', 'Intermediate', this)">Intermediate</button>
+          <button class="option-btn" onclick="selectOption('level', 'Advanced', this)">Advanced</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Step 4</div>
+        <div class="card-title">How intense do you want today's session?</div>
+        <div class="intensity-row">
+          <button class="option-btn" onclick="selectOption('intensity', 'Light — just getting started', this)">Light</button>
+          <button class="option-btn" onclick="selectOption('intensity', 'Moderate — solid workout', this)">Moderate</button>
+          <button class="option-btn" onclick="selectOption('intensity', 'Hard — push my limits', this)">Hard</button>
+        </div>
+      </div>
+
+      <button class="generate-btn" onclick="generatePlan()">Generate my workout plan</button>
+      <div class="error-msg" id="errorMsg">Please fill in all steps before generating your plan.</div>
+
+    </div>
+
+    <div class="results" id="resultsSection">
+      <div class="card">
+        <div class="plan-header">
+          <div>
+            <div style="font-size:20px;font-weight:700;margin-bottom:4px" id="planTitle">Your workout plan</div>
+            <div style="font-size:13px;color:var(--gb-muted)" id="planSubtitle"></div>
+          </div>
+          <div class="plan-badge">AI Generated</div>
+        </div>
+        <div id="exerciseList"></div>
+      </div>
+      <button class="reset-btn" onclick="resetForm()">Start over with new inputs</button>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
