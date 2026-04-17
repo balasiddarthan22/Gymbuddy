@@ -45,7 +45,7 @@ Include 5-6 exercises for workout plans. Be warm and motivating.`;
     }));
 
   const apiKey = process.env.GEMINI_API_KEY;
-  const models = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+  const models = ['gemini-2.5-flash'];
   let lastError = null;
 
   for (const model of models) {
@@ -65,7 +65,7 @@ Include 5-6 exercises for workout plans. Be warm and motivating.`;
       if (!res.ok) {
         const errBody = await res.json().catch(() => ({}));
         lastError = `[${model}] ${res.status}: ${errBody?.error?.message ?? 'unknown'}`;
-        if (res.status === 403 || res.status === 401) break;
+        if (res.status === 403 || res.status === 401 || res.status === 400) break;
         continue;
       }
 

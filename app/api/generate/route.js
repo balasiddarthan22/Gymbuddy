@@ -30,11 +30,7 @@ Include 5-6 exercises appropriate for their level and equipment. Be encouraging 
 
   const apiKey = process.env.GEMINI_API_KEY;
 
-  const models = [
-    'gemini-2.5-flash',
-    'gemini-2.0-flash',
-    'gemini-3-flash-preview',
-  ];
+  const models = ['gemini-2.5-flash'];
 
   let lastError = null;
 
